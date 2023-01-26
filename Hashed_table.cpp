@@ -7,7 +7,8 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "rus");
+	//setlocale(LC_ALL, "rus");
+	setlocale(LC_ALL, ".UTF8");
 
 	{
 		table a;
@@ -39,9 +40,9 @@ int main()
 				cout << "Введите ключ: ";
 				cin >> key;
 
-				Info* inf = a[key];
-				if (inf != nullptr) {
-					cout << "Запись найдена: " << inf->data << endl;
+				
+				if (a(key)) {
+					cout << "Запись найдена: " << a[key].data << endl;
 				}
 				else {
 					cout << "Нет такой записи" << endl;
@@ -54,8 +55,8 @@ int main()
 				int key;
 				cout << "Введите ключ: ";
 				cin >> key;
-
-				if (a-=a[key]) {
+				a -= a[key];
+				if (a(key)) {
 					cout << "Операция успешно выполнена" << endl;
 				}
 				else {
@@ -63,7 +64,7 @@ int main()
 				}
 			}
 			else if (action == 5) {
-				a.Clear;
+				a.Clear();
 			}
 		} while (action != 0);
 
